@@ -1,0 +1,29 @@
+@startuml observer-part-one
+
+class NewsAgency {
+    - name: string
+
+    + NewsAgency(name: string)
+    
+    + subscribe(channel: NewsChannel)
+    + unsubscirbe(channel: NewsChannel)
+    + broadcast(news: string)
+}
+note left of NewsAgency: Observable/Publisher
+
+
+class NewsChannel {
+
+    - name: string
+
+    + Newschannel(name: string)
+
+    + notify(news: string)
+}
+note right of NewsChannel: Ovserver/Subscriber
+
+
+
+NewsAgency o-right-> "0..*" NewsChannel: notify >
+
+@enduml
